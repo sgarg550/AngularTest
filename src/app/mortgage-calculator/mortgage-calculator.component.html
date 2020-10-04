@@ -1,13 +1,77 @@
-<form class="h100" novalidate formGroup="mortgageForm" (ngSubmit)="onSubmit(mortgageForm.value)">
-  <div class="scroll-wr">
-    <div class="content-header">
-      <div class="title-panel">Payment Plan</div>
-    </div>
-    <div class="content-body">
-
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h2>Payment Plan</h2>
+        <form [formGroup]="mortgageForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>Mortgage Amount</label>
+            <input type="text" formControlName="mortgage_amount" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+            <div *ngIf="submitted && f.mortgage_amount.errors" class="invalid-feedback">
+              <div *ngIf="f.mortgage_amount.errors.required">Mortgage Amount is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Interest Rate</label>
+            <input type="text" formControlName="interest_rate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.interest_rate.errors }" />
+            <div *ngIf="submitted && f.interest_rate.errors" class="invalid-feedback">
+              <div *ngIf="f.interest_rate.errors.required">Interest rate is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Amortization Period</label>
+            <input type="text" formControlName="amortization_period" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.amortization_period.errors }" />
+            <div *ngIf="submitted && f.amortization_period.errors" class="invalid-feedback">
+              <div *ngIf="f.amortization_period.errors.required">Amortization period is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Payment Frequency</label>
+            <input type="text" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.payment_frequency.errors }" />
+            <div *ngIf="submitted && f.payment_frequency.errors" class="invalid-feedback">
+              <div *ngIf="f.payment_frequency.errors.required">Payment Frequency is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Term</label>
+            <input type="text" formControlName="term" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.term.errors }" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.term.errors.required">Term is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Term</label>
+            <input type="text" formControlName="term" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.term.errors }" />
+            <div *ngIf="submitted && f.term.errors" class="invalid-feedback">
+              <div *ngIf="f.term.errors.required">Term is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Prepayment Amount</label>
+            <input type="text" formControlName="term" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.prepayment_amount.errors }" />
+            <div *ngIf="submitted && f.prepayment_amount.errors" class="invalid-feedback">
+              <div *ngIf="f.prepayment_amount.errors.required">Prepayment Amount is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Prepayment Frequency</label>
+            <input type="text" formControlName="prepayment_frequency" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.prepayment_frequency.errors }" />
+            <div *ngIf="submitted && f.prepayment_frequency.errors" class="invalid-feedback">
+              <div *ngIf="f.prepayment_frequency.errors.required">Prepayment Frequency is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Start With Payment</label>
+            <input type="text" formControlName="start_with_payment" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.start_with_payment.errors }" />
+            <div *ngIf="submitted && f.start_with_payment.errors" class="invalid-feedback">
+              <div *ngIf="f.start_with_payment.errors.required">Start With Payment is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary">Calculate</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-  <div class="content-footer">
-   <button type="submit" class="btn prim">Calculate</button>
-  </div>
-</form>
+</div>

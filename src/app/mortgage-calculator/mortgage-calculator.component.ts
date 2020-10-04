@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
-
 @Component({
   selector: 'app-mortgage-calculator',
   templateUrl: './mortgage-calculator.component.html',
@@ -10,15 +9,17 @@ import {Router} from '@angular/router';
 export class MortgageCalculatorComponent implements OnInit {
 
   public mortgageForm: FormGroup;
+  submitted = false;
+
   constructor(private fb: FormBuilder,
               private router: Router) {
     this.mortgageForm = this.fb.group({
-      'mortgage_amount': new FormControl('', Validators.compose([Validators.required, Validators.email])),
-      'interest_rate': new FormControl('', Validators.compose([Validators.required, Validators.email])),
-      'amortization_period': new FormControl('', Validators.compose([Validators.required, Validators.email])),
-      'payment_frequency': new FormControl('', Validators.compose([Validators.required, Validators.email])),
-      'term': new FormControl('', Validators.compose([Validators.required, Validators.email])),
-      'prepayment_amount': new FormControl('', Validators.compose([Validators.required, Validators.email])),
+      'mortgage_amount': new FormControl('', Validators.compose([Validators.required])),
+      'interest_rate': new FormControl('', Validators.compose([Validators.required])),
+      'amortization_period': new FormControl('', Validators.compose([Validators.required])),
+      'payment_frequency': new FormControl('', Validators.compose([Validators.required])),
+      'term': new FormControl('', Validators.compose([Validators.required])),
+      'prepayment_amount': new FormControl('', Validators.compose([Validators.required])),
       'prepayment_frequency': new FormControl('', Validators.compose([Validators.required, Validators.pattern('^[A-Za-z]{2,15}$')])),
       'start_with_payment': new FormControl('', Validators.compose([Validators.required, Validators.pattern('^[A-Za-z]{2,15}$')])),
     });
@@ -27,22 +28,15 @@ export class MortgageCalculatorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public onSubmit(values: Object): void {
-    if (this.mortgageForm.valid) {
-    } else {
-      this.validateAllFormFields(this.mortgageForm);
-    }
-  }
+  get f() { return this.mortgageForm.controls; }
 
-  public validateAllFormFields(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach(field => {
-      const control = formGroup.get(field);
-      if (control instanceof FormControl) {
-        control.markAsTouched({ onlySelf: true });
-      } else if (control instanceof FormGroup) {
-        this.validateAllFormFields(control);
-      }
-    });
+  public onSubmit() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.mortgageForm.invalid) {
+      return;
+    }
   }
 
   }

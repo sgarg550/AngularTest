@@ -4,8 +4,7 @@ import { MortgageCalculatorComponent } from './mortgage-calculator/mortgage-calc
 
 
 const routes: Routes = [
-  {path:  '', pathMatch:  'full', redirectTo:  'app'},
-  {path: 'mortgage-calculator', component: MortgageCalculatorComponent}];
+   {path: 'mortgage-calculator', component: MortgageCalculatorComponent}];
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule  ]
