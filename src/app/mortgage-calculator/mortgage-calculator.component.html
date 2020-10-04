@@ -1,7 +1,7 @@
 <div class="jumbotron">
   <div class="container">
+    <form [formGroup]="mortgageForm" (ngSubmit)="onSubmit()">
     <div class="row">
-      <form [formGroup]="mortgageForm" (ngSubmit)="onSubmit()">
       <div class="col-md-6">
         <h2>Payment Plan</h2>
           <div class="form-group">
@@ -9,6 +9,7 @@
             <input type="text" formControlName="mortgage_amount" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mortgage_amount.errors }" />
             <div *ngIf="submitted && f.mortgage_amount.errors" class="invalid-feedback">
               <div *ngIf="f.mortgage_amount.errors.required">Mortgage Amount is required</div>
+              <div *ngIf="f.mortgage_amount.errors.pattern">Mortgage Amount should be numeric</div>
             </div>
           </div>
           <div class="form-group">
@@ -20,21 +21,85 @@
           </div>
           <div class="form-group">
             <label>Amortization Period</label>
-            <input type="text" formControlName="amortization_period" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.amortization_period.errors }" />
-            <div *ngIf="submitted && f.amortization_period.errors" class="invalid-feedback">
-              <div *ngIf="f.amortization_period.errors.required">Amortization period is required</div>
+            <select class="custom-select" style="width:150px;" formControlName="amortization_period_yr" [ngClass]="{ 'is-invalid': submitted && f.amortization_period_yr.errors }">
+              <option value="0"> </option>
+              <option value="1">1 Year</option>
+              <option value="2">2 Years</option>
+              <option value="3">3 Years</option>
+              <option value="4">4 Years</option>
+              <option value="5">5 Years</option>
+              <option value="6">6 Years</option>
+              <option value="7">7 Years</option>
+              <option value="8">8 Years</option>
+              <option value="9">9 Years</option>
+              <option value="10">10 Years</option>
+              <option selected="selected" value="11">11 Years</option>
+              <option value="12">12 Years</option>
+              <option value="13">13 Years</option>
+              <option value="14">14 Years</option>
+              <option value="15">15 Years</option>
+              <option value="16">16 Years</option>
+              <option value="17">17 Years</option>
+              <option value="18">18 Years</option>
+              <option value="19">19 Years</option>
+              <option value="20">20 Years</option>
+              <option value="21">21 Years</option>
+              <option value="22">22 Years</option>
+              <option value="23">23 Years</option>
+              <option value="24">24 Years</option>
+              <option value="25">25 Years</option>
+              <option value="26">26 Years</option>
+              <option value="27">27 Years</option>
+              <option value="28">28 Years</option>
+              <option value="29">29 Years</option>
+              <option value="30">30 Years</option>
+            </select>
+            <select class="custom-select" style="width:150px;" formControlName="amortization_period_mon" [ngClass]="{ 'is-invalid': submitted && f.amortization_period_yr.errors }">
+              <option selected="selected" value="0"> </option>
+              <option value="1">1 Month</option>
+              <option value="2">2 Months</option>
+              <option value="3">3 Months</option>
+              <option value="4">4 Months</option>
+              <option value="5">5 Months</option>
+              <option value="6">6 Months</option>
+              <option value="7">7 Months</option>
+              <option value="8">8 Months</option>
+              <option value="9">9 Months</option>
+              <option value="10">10 Months</option>
+              <option value="11">11 Months</option>
+            </select>
+            <div *ngIf="submitted && f.amortization_period_yr.errors" class="invalid-feedback">
+              <div *ngIf="f.amortization_period_yr.errors.required">Amortization period is required</div>
             </div>
           </div>
           <div class="form-group">
             <label>Payment Frequency</label>
-            <input type="text" formControlName="payment_frequency" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.payment_frequency.errors }" />
+            <select class="custom-select" style="width:300px;" formControlName="payment_frequency" [ngClass]="{ 'is-invalid': submitted && f.payment_frequency.errors }">
+              <option value="AccW">Accelerated Weekly</option>
+              <option value="W">Weekly</option>
+              <option value="AccBiW">Accelerated Bi-weekly</option>
+              <option value="BiW">Bi-Weekly (every 2 weeks)</option>
+              <option value="SemiM">Semi-monthly (24x per year)</option>
+              <option selected="selected" value="M">Monthly (12x per year)</option>
+            </select>
             <div *ngIf="submitted && f.payment_frequency.errors" class="invalid-feedback">
               <div *ngIf="f.payment_frequency.errors.required">Payment Frequency is required</div>
             </div>
           </div>
           <div class="form-group">
             <label>Term</label>
-            <input type="text" formControlName="term" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.term.errors }" />
+            <select class="custom-select" style="width:300px;" formControlName="term" [ngClass]="{ 'is-invalid': submitted && f.term.errors }">
+              <option value="1">1 Year</option>
+              <option value="2">2 Years</option>
+              <option value="3">3 Years</option>
+              <option value="4">4 Years</option>
+              <option selected="selected" value="5">5 Years</option>
+              <option value="6">6 Years</option>
+              <option value="7">7 Years</option>
+              <option value="8">8 Years</option>
+              <option value="9">9 Years</option>
+              <option value="10">10 Years</option>
+            </select>
             <div *ngIf="submitted && f.term.errors" class="invalid-feedback">
               <div *ngIf="f.term.errors.required">Term is required</div>
             </div>
@@ -44,14 +109,18 @@
         <h2>Prepayment Plan</h2>
         <div class="form-group">
           <label>Prepayment Amount</label>
-          <input type="text" formControlName="term" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.prepayment_amount.errors }" />
+          <input type="text" formControlName="prepayment_amount" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.prepayment_amount.errors }" />
           <div *ngIf="submitted && f.prepayment_amount.errors" class="invalid-feedback">
             <div *ngIf="f.prepayment_amount.errors.required">Prepayment Amount is required</div>
           </div>
         </div>
         <div class="form-group">
           <label>Prepayment Frequency</label>
-          <input type="text" formControlName="prepayment_frequency" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.prepayment_frequency.errors }" />
+          <select class="custom-select" style="width:300px;" formControlName="prepayment_frequency" [ngClass]="{ 'is-invalid': submitted && f.prepayment_frequency.errors }">
+            <option selected="selected" value="1">One time</option>
+            <option value="Y">Each year</option>
+            <option value="SameAsRegPay">Same as regular payment</option>
+          </select>
           <div *ngIf="submitted && f.prepayment_frequency.errors" class="invalid-feedback">
             <div *ngIf="f.prepayment_frequency.errors.required">Prepayment Frequency is required</div>
           </div>
@@ -64,12 +133,28 @@
           </div>
         </div>
       </div>
-      <div class="row">
+    </div>
+    <div class="row">
+      <div class="col-md-4">
         <div class="form-group">
           <button type="submit" class="btn btn-primary">Calculate</button>
         </div>
       </div>
-      </form>
     </div>
+    </form>
   </div>
+</div>
+<div class="jumbotron" *ngIf="show">
+  <h1 class="display-4">Mortgage Summary</h1>
+  <p class="lead">Over the 11-year amortization period, you will:</p>
+  <hr class="my-4">
+  <p>have made 132 monthly (12x per year) payments of $0.32.</p>
+  <p>have paid $33.00 in principal, $9.86 in interest, for a total of $42.86.</p>
+  <p class="lead">Over the 5-year term, you will:</p>
+  <hr class="my-4">
+  <p>have made 132 monthly (12x per year) payments of $0.32.</p>
+  <p>have paid $33.00 in principal, $9.86 in interest, for a total of $42.86.</p>
+  <p class="lead">At the end of your 5-year term, you will:</p>
+  <hr class="my-4">
+  <p>have a balance of $20.19.</p>
 </div>

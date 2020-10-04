@@ -4,9 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { MortgageCalculatorComponent } from './mortgage-calculator/mortgage-calculator.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full'},
-  { path: '**', redirectTo: 'login', pathMatch: 'full'},
-  {path: 'mortgage-calculator', component: MortgageCalculatorComponent}];
+  { path: '', redirectTo: 'app', pathMatch: 'full'},
+  { path: '**', redirectTo: 'app', pathMatch: 'full'},
+  { path: 'mortgage-calculator', component: MortgageCalculatorComponent}];
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule  ]
