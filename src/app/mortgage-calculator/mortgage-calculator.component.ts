@@ -14,25 +14,22 @@ export class MortgageCalculatorComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private router: Router) {
     this.mortgageForm = this.fb.group({
-      'mortgage_amount': new FormControl('', Validators.compose([Validators.required])),
-      'interest_rate': new FormControl('', Validators.compose([Validators.required])),
-      'amortization_period': new FormControl('', Validators.compose([Validators.required])),
-      'payment_frequency': new FormControl('', Validators.compose([Validators.required])),
-      'term': new FormControl('', Validators.compose([Validators.required])),
-      'prepayment_amount': new FormControl('', Validators.compose([Validators.required])),
-      'prepayment_frequency': new FormControl('', Validators.compose([Validators.required, Validators.pattern('^[A-Za-z]{2,15}$')])),
-      'start_with_payment': new FormControl('', Validators.compose([Validators.required, Validators.pattern('^[A-Za-z]{2,15}$')])),
+      mortgage_amount: ['', Validators.compose([Validators.required])],
+      interest_rate: ['', Validators.compose([Validators.required])],
+      amortization_period: ['', Validators.compose([Validators.required])],
+      payment_frequency:  ['', Validators.compose([Validators.required])],
+      term: ['', Validators.compose([Validators.required])],
+      prepayment_amount: ['', Validators.compose([Validators.required])],
+      prepayment_frequency: ['', Validators.compose([Validators.required, Validators.pattern('^[A-Za-z]{2,15}$')])],
+      start_with_payment: ['', Validators.compose([Validators.required, Validators.pattern('^[A-Za-z]{2,15}$')])],
     });
   }
 
   ngOnInit(): void {
   }
 
-  get f() { return this.mortgageForm.controls; }
-
-  public onSubmit() {
+  submitForm() {
     this.submitted = true;
-
     // stop here if form is invalid
     if (this.mortgageForm.invalid) {
       return;
