@@ -10,7 +10,6 @@ export class CalculateMortgageService {
   constructor() { }
 
   getMortgageSummary(form: MortgageValues): CalculationSummary {
-    console.log(form);
     const monthlyMortgageAmount: number =
     this.getMonthlyMortgageAmount(form.mortgageAmount, form.interestRate, form.amortizationPeriod);
     const summary: CalculationSummary = {

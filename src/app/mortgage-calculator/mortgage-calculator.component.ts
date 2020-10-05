@@ -55,14 +55,5 @@ export class MortgageCalculatorComponent implements OnInit {
         };
         this.summary = this.calculateMortgageService.getMortgageSummary(values);
       }
-      // const data = this.mortgageForm.getRawValue();
-      // this.calculateMortgageService.Calculate(data).map((res) => {
-      //     console.log(res);
-      //     console.log(res.val_1);
-      //     if (res.val_1) {
-      //       this.show = true;
-      //     }
-      //   }
-      // );
     }
  }
