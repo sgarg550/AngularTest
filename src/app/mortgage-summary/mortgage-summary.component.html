@@ -1,0 +1,67 @@
+<h3 class="text-center">Calculation Summary</h3>
+<div class="row">
+  <div class="col col-md-12">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Category</th>
+        <th scope="col">Term</th>
+        <th scope="col">Amortization Period</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>{{ summary.numberOfPayments.key }}</td>
+        <td>{{ summary.numberOfPayments.term }}</td>
+        <td>{{ summary.numberOfPayments.amortizationPeriod }}</td>
+      </tr>
+      <tr>
+        <td>{{ summary.mortgagePayment.key }}</td>
+        <td>{{ summary.mortgagePayment.term | currency }}</td>
+        <td>{{ summary.mortgagePayment.amortizationPeriod | currency}}</td>
+      </tr>
+      <tr>
+        <td>{{ summary.prepayment.key }}</td>
+        <td>{{ summary.prepayment.term | currency }}</td>
+        <td>{{ summary.prepayment.amortizationPeriod | currency }}</td>
+      </tr>
+      <tr>
+        <td>{{ summary.principalPayments.key }}</td>
+        <td>{{ summary.principalPayments.term | currency }}</td>
+        <td>{{ summary.principalPayments.amortizationPeriod | currency }}</td>
+      </tr>
+      <tr>
+        <td>{{ summary.interestPayments.key }}</td>
+        <td>{{ summary.interestPayments.term | currency }}</td>
+        <td>{{ summary.interestPayments.amortizationPeriod | currency }}</td>
+      </tr>
+      <tr>
+        <td>{{ summary.totalCost.key }}</td>
+        <td>{{ summary.totalCost.term | currency }}</td>
+        <td>{{ summary.totalCost.amortizationPeriod | currency }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h2>Mortgage Summary</h2>
+<div>
+  Over the {{ summary.numberOfPayments.amortizationPeriod/12 }}-year amortization period, you will:
+  <ul>
+    <li>have made <strong>{{ summary.numberOfPayments.amortizationPeriod }}</strong> monthly (12x per year) payments of <strong>{{ summary.mortgagePayment.term | currency }}</strong>.</li>
+    <li>have paid <strong>{{ summary.principalPayments.amortizationPeriod | currency }}</strong> in principal, <strong>{{ summary.interestPayments.amortizationPeriod | currency }}</strong> in interest, for a total of <strong>{{ summary.totalCost.amortizationPeriod | currency }}</strong>.</li>
+  </ul>
+</div>
+<div>
+  Over the {{ summary.numberOfPayments.term/12 }}-year term, you will:
+  <ul>
+    <li>have made <strong>{{ summary.numberOfPayments.term }}</strong> monthly (12x per year) payments of <strong>{{ summary.mortgagePayment.term | currency }}</strong>.</li>
+    <li>have paid <strong>{{ summary.principalPayments.term | currency }}</strong> in principal, <strong>{{ summary.interestPayments.term | currency }}</strong> in interest, for a total of <strong>{{ summary.totalCost.term | currency }}</strong>.</li>
+  </ul>
+</div>
+<div>
+  Over the {{ summary.numberOfPayments.term/12 }}-year term, you will:
+  <ul>
+    <li>have a balance of <strong>{{ 88507.50 | currency }}</strong>.</li></ul>
+</div>

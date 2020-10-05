@@ -8,13 +8,15 @@ import { HeaderComponent } from './header/header.component';
 import { MortgageCalculatorComponent } from './mortgage-calculator/mortgage-calculator.component';
 
 import { AppRoutingModule } from './app-routing.module';
+import { MortgageSummaryComponent } from './mortgage-summary/mortgage-summary.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MortgageCalculatorComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    MortgageSummaryComponent
   ],
   imports: [
     BrowserModule,
