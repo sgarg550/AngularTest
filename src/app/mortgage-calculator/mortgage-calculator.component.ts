@@ -41,13 +41,12 @@ export class MortgageCalculatorComponent implements OnInit {
       return;
     } else{
       const data = this.mortgageForm.getRawValue();
-      this.calculateMortgageService.Calculate(data).subscribe((res) => {
-          if (res.data) {
+      this.calculateMortgageService.Calculate(data).map((res) => {
+          console.log(res);
+          console.log(res.val_1);
+          if (res.val_1) {
             this.show = true;
           }
-        },
-        err => {
-          this.errormsg = err.msg;
         }
       );
     }

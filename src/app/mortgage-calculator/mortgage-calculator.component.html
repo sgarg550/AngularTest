@@ -117,7 +117,7 @@
         <div class="form-group">
           <label>Prepayment Frequency</label>
           <select class="custom-select" style="width:300px;" formControlName="prepayment_frequency" [ngClass]="{ 'is-invalid': submitted && f.prepayment_frequency.errors }">
-            <option selected="selected" value="1">One time</option>
+            <option [selected] value="1">One time</option>
             <option value="Y">Each year</option>
             <option value="SameAsRegPay">Same as regular payment</option>
           </select>
